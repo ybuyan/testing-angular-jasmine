@@ -1,5 +1,6 @@
 import { EMPTY } from 'rxjs/internal/observable/empty';
 import { from } from 'rxjs/internal/observable/from';
+import { throwError } from 'rxjs/internal/observable/throwError';
 import { TodoService } from './todo.service';
 import { TodosComponent } from './todos.component';
 
@@ -46,6 +47,17 @@ describe('TodosComponent', () => {
     component.add();
 
     expect(component.todos.indexOf(toDo)).toBeGreaterThan(-1);
+  });
+
+  it('Should set the message property if server returns an error when adding a new `todo`', () => {
+
+    const errorMsg = 'Error from the server';
+
+    spyOn(service, 'add').and.returnValue(throwError(errorMsg));
+
+    component.add();
+
+    expect(component.message).toBe(errorMsg);
   });
 
 });
