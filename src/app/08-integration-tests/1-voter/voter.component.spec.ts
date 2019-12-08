@@ -1,0 +1,9 @@
+describe('VoterComponent', () => {
+
+  beforeEach(() => {
+  });
+
+  it('', () => {
+  });
+
+});

@@ -1,7 +1,11 @@
-import { OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { TodoService } from './todo.service';
 
+@Component({
+  selector: 'testing-todos',
+  templateUrl: './todos.component.html'
+})
 export class TodosComponent implements OnInit, OnDestroy {
 
   todos: any[] = [];
