@@ -1,19 +1,28 @@
-import { OnInit } from '@angular/core';
+import { OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { TodoService } from './todo.service';
 
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
 
   todos: any = [];
   message: any;
+
+  private subscriptions = new Subscription();
 
   constructor(
     private service: TodoService,
   ) { }
 
   ngOnInit() {
-    this.service
-      .getTodos()
-      .subscribe((toDos: any) => this.todos = toDos);
+    this.subscriptions.add(
+      this.service
+        .getTodos()
+        .subscribe((toDos: any) => this.todos = toDos)
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   add(): void {
@@ -29,9 +38,11 @@ export class TodosComponent implements OnInit {
 
   delete(id: number): void {
     if (confirm('Are you sure?')) {
-      this.service
-        .delete(id)
-        .subscribe();
+      this.subscriptions.add(
+        this.service
+          .delete(id)
+          .subscribe()
+      );
     }
   }
 }
