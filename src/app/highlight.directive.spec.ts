@@ -5,8 +5,8 @@ import { HighlightDirective } from './highlight.directive';
 @Component({
   template: `
 
-    <p highlight="cyan">First</p>
-    <p highlight>Second</p>
+    <p testingHighlight="cyan">First</p>
+    <p testingHighlight>Second</p>
 
   `
 })
