@@ -81,7 +81,7 @@ describe('TodosComponent', () => {
 
     component.delete(id);
 
-    expect(spy).not.toHaveBeenCalledWith(id);
+    expect(spy).not.toHaveBeenCalled();
   });
 
 });

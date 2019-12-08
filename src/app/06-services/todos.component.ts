@@ -13,7 +13,7 @@ export class TodosComponent implements OnInit {
   ngOnInit() {
     this.service
       .getTodos()
-      .subscribe((toDos) => this.todos = toDos);
+      .subscribe((toDos: any) => this.todos = toDos);
   }
 
   add(): void {
@@ -22,7 +22,7 @@ export class TodosComponent implements OnInit {
     this.service
       .add(newTodo)
       .subscribe(
-        (toDo) => this.todos.push(toDo),
+        (toDo: any) => this.todos.push(toDo),
         (error: any) => this.message = error
       );
   }

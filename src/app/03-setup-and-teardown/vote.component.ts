@@ -1,11 +1,12 @@
 export class VoteComponent {
+
   totalVotes = 0;
 
-  upVote() {
+  upVote(): void {
     this.totalVotes++;
   }
 
-  downVote() {
+  downVote(): void {
     this.totalVotes--;
   }
 }
