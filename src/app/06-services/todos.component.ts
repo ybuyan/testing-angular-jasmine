@@ -30,10 +30,10 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     this.service
       .add(newTodo)
-      .subscribe(
-        (toDo: any) => this.todos.push(toDo),
-        (error: any) => this.message = error
-      );
+      .subscribe({
+        next: (toDo: any) => this.todos.push(toDo),
+        error: (error: any) => this.message = error
+      });
   }
 
   delete(id: number): void {
