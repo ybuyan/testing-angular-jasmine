@@ -14,7 +14,7 @@ describe('UsersComponent', () => {
     component = new UsersComponent(service);
   });
 
-  it('should set users property with the users retrieved from the server', () => {
+  it('Should set users property with the users retrieved from the server', () => {
 
     const users = [1, 2, 3];
     spyOn(service, 'getUsers').and.returnValue(from([users]));
@@ -37,7 +37,7 @@ describe('UsersComponent', () => {
       user = component.users[0];
     });
 
-    it('should remove the selected user from the list if the user confirms deletion', () => {
+    it('Should remove the selected user from the list if the user confirms deletion', () => {
 
       spyOn(window, 'confirm').and.returnValue(true);
       spyOn(service, 'deleteUser').and.returnValue(EMPTY);
@@ -47,7 +47,7 @@ describe('UsersComponent', () => {
       expect(component.users.indexOf(user)).toBe(-1);
     });
 
-    it('should NOT remove the seleted user from the list if the user cancels', () => {
+    it('Should NOT remove the seleted user from the list if the user cancels', () => {
 
       spyOn(window, 'confirm').and.returnValue(false);
 
@@ -56,7 +56,7 @@ describe('UsersComponent', () => {
       expect(component.users.indexOf(user)).toBeGreaterThan(-1);
     });
 
-    it('should call the server to delete the selected user if the user confirms deletion', () => {
+    it('Should call the server to delete the selected user if the user confirms deletion', () => {
 
       spyOn(window, 'confirm').and.returnValue(true);
       const spy = spyOn(service, 'deleteUser').and.returnValue(EMPTY);
@@ -66,7 +66,7 @@ describe('UsersComponent', () => {
       expect(spy).toHaveBeenCalledWith(user.id);
     });
 
-    it('should NOT call the server to delete the selected user if the user cancels', () => {
+    it('Should NOT call the server to delete the selected user if the user cancels', () => {
 
       spyOn(window, 'confirm').and.returnValue(false);
       const spy = spyOn(service, 'deleteUser').and.returnValue(EMPTY);
@@ -76,7 +76,7 @@ describe('UsersComponent', () => {
       expect(spy).not.toHaveBeenCalled();
     });
 
-    it('should undo deletion if the call to the server fails', () => {
+    it('Should undo deletion if the call to the server fails', () => {
 
       spyOn(window, 'confirm').and.returnValue(true);
 
@@ -89,7 +89,7 @@ describe('UsersComponent', () => {
       expect(component.users.indexOf(user)).toBeGreaterThan(-1);
     });
 
-    it('should display an error if the call to the server fails', () => {
+    it('Should display an error if the call to the server fails', () => {
 
       spyOn(window, 'confirm').and.returnValue(true);
       const spy = spyOn(window, 'alert').and.callFake(() => { });
@@ -99,5 +99,7 @@ describe('UsersComponent', () => {
 
       expect(spy).toHaveBeenCalled();
     });
+
   });
+
 });

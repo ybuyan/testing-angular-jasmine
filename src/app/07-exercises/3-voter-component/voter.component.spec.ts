@@ -8,7 +8,7 @@ describe('VoterComponent', () => {
     component = new VoterComponent();
   });
 
-  it('should calculate total votes properly', () => {
+  it('Should calculate total votes properly', () => {
 
     component.myVote = 1;
     component.othersVote = 2;
@@ -22,7 +22,7 @@ describe('VoterComponent', () => {
    */
   describe('When I upvote,', () => {
 
-    it('should increment total votes', () => {
+    it('Should increment total votes', () => {
 
       component.upVote();
 
@@ -42,7 +42,7 @@ describe('VoterComponent', () => {
        */
     });
 
-    it('should NOT increment total votes if I have already submitted a positive vote', () => {
+    it('Should NOT increment total votes if I have already submitted a positive vote', () => {
 
       component.myVote = 1;
 
@@ -51,7 +51,7 @@ describe('VoterComponent', () => {
       expect(component.totalVotes).toBe(1);
     });
 
-    it('should raise an event', () => {
+    it('Should raise an event', () => {
 
       let eventData = null;
 
@@ -66,7 +66,7 @@ describe('VoterComponent', () => {
       expect(eventData).toEqual({ myVote: 1 });
     });
 
-    it('should NOT raise an event if I have already submitted a positive vote', () => {
+    it('Should NOT raise an event if I have already submitted a positive vote', () => {
 
       let eventData = null;
 
@@ -81,14 +81,14 @@ describe('VoterComponent', () => {
 
   describe('When I downvote,', () => {
 
-    it('should decrement total votes', () => {
+    it('Should decrement total votes', () => {
 
       component.downVote();
 
       expect(component.totalVotes).toBe(-1);
     });
 
-    it('should NOT decrement total votes if I have already submitted a negative vote', () => {
+    it('Should NOT decrement total votes if I have already submitted a negative vote', () => {
 
       component.myVote = -1;
 
@@ -97,7 +97,7 @@ describe('VoterComponent', () => {
       expect(component.totalVotes).toBe(-1);
     });
 
-    it('should raise an event', () => {
+    it('Should raise an event', () => {
 
       let eventData = null;
 
@@ -108,7 +108,7 @@ describe('VoterComponent', () => {
       expect(eventData).toEqual({ myVote: -1 });
     });
 
-    it('should NOT raise an event if I have already submitted a negative vote', () => {
+    it('Should NOT raise an event if I have already submitted a negative vote', () => {
 
       let eventData = null;
 
