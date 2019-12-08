@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { from } from 'rxjs/internal/observable/from';
 import { TodoService } from './todo.service';
 import { TodosComponent } from './todos.component';
 
@@ -30,11 +31,24 @@ describe('TodosComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodosComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('Should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Should load `TODO`s from the server', () => {
+
+    const toDos = [1, 2, 3];
+
+    // This work if you have provided that dependency at the module level
+    const service = TestBed.get(TodoService);
+
+    spyOn(service, 'getTodos').and.returnValue(from([toDos]));
+
+    fixture.detectChanges();
+
+    expect(component.todos.length).toBe(3);
   });
 
 });
